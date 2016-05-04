@@ -1,28 +1,27 @@
 package xyz.skycat.mvn.springboot;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class HelloController {
 
-	String[] names = { "taro", "jiro", "saburo" };
-	String[] ages = { "30", "27", "20" };
-
-	@RequestMapping("/{id}")
-	public DataObject index(@PathVariable int id) {
-		DataObject obj = new DataObject();
-		obj.id = id;
-		obj.name = names[id];
-		obj.age = ages[id];
-		return obj;
+	@RequestMapping("/")
+	public String index() {
+		return "index";
 	}
 
-	class DataObject {
-		public int id;
-		public String name;
-		public String age;
+	@RequestMapping("/{num}")
+	public ModelAndView indexNum(@PathVariable int num, ModelAndView model) {
+		int res = 0;
+		for (int i = 0; i < num; i++) {
+			res += i;
+		}
+		model.addObject("msg", "total: " + res);
+		model.setViewName("index");
+		return model;
 	}
-	
+
 }
