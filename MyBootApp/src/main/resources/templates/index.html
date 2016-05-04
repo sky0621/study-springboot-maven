@@ -5,6 +5,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p th:text="${msg}" />
+<p th:text="${msg}"></p>
+<form method="post" action="/">
+	<input type="text" name="text1" th:value="${value}" />
+	<input type="submit" value="Click" />
+</form>
 </body>
 </html>
