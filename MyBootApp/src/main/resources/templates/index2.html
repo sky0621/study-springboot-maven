@@ -2,9 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
-<title>Insert title here</title>
+<title th:text="#{content.title}"></title>
 </head>
 <body>
 <p>ABC</p>
+<p th:text="${new java.util.Date().toString()}"></p>
+<p th:text="${#dates.format(new java.util.Date(), 'dd/MMM/yyyy HH:mm')}"></p>
+<p th:text="${#numbers.formatInteger(1234,7)}"></p>
+<p th:text="${#strings.toUpperCase('Welcome')}">Z</p>
+<!-- >p th:text="from parameter... id=' + ${param.id[0]} + ', name=' + ${param.name[0]}"></p -->
+<p th:text="${param.id[0]}">B</p>C
+<p th:text="#{content.message}"></p>
+<p><a th:href="@{'/forwardto/' + ${#numbers.formatInteger(1234,7)}}">LINK</a></p>
+<hr/>
+<table th:object="${object}">
+	<tr><th>ID</th><td th:text="*{id}"></td></tr>
+	<tr><th>NAME</th><td th:text="*{name}"></td></tr>
+	<tr><th>MAIL</th><td th:text="*{mail}"></td></tr>
+</table>
 </body>
 </html>
