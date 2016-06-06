@@ -8,4 +8,6 @@ import xyz.skycat.mvn.springboot.MyData;
 @Repository
 public interface MyDataRepository extends JpaRepository<MyData, Long> {
 
+//	public MyData findById(Long id);
+
 }
